@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // チームのAGENTS.md（AI利用ポリシー）をNext.jsに上書きさせない
+  agentRules: false,
   cacheComponents: true,
   partialPrefetching: true,
   turbopack: {
