@@ -35,10 +35,12 @@
 採用しなかったもの：Supabase（ログイン・権限の肩代わりが多く、仕組みが見えにくいため）、Cloudflare R2 / S3（MVPに画像アップロードがないため）、CDN（Vercelに内蔵）
 
 ## 起動方法
+パッケージ管理と実行には **Bun** を使う（npmと混ぜない）。未インストールなら https://bun.sh の手順で入れる（Macは `brew install oven-sh/bun/bun` でも可）。
+
 ```bash
-npm install
+bun install
 cp .env.example .env.local   # DBやログインを使う時だけ値を入れる
-npm run dev
+bun run dev
 ```
 ブラウザで http://localhost:3000 を開く。今はダミーデータ（`src/data/dummy.ts`）を表示している。
 
