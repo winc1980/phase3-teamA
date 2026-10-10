@@ -35,7 +35,18 @@
 採用しなかったもの：Supabase（ログイン・権限の肩代わりが多く、仕組みが見えにくいため）、Cloudflare R2 / S3（MVPに画像アップロードがないため）、CDN（Vercelに内蔵）
 
 ## 起動方法
-<!-- 環境構築が決まったら追記 -->
+```bash
+npm install
+cp .env.example .env.local   # DBやログインを使う時だけ値を入れる
+npm run dev
+```
+ブラウザで http://localhost:3000 を開く。今はダミーデータ（`src/data/dummy.ts`）を表示している。
+
+## フォルダ構成
+- `src/app/` 画面（`page.tsx` がトップ、`courses/[id]/page.tsx` が授業詳細）
+- `src/data/dummy.ts` 開発用のダミーデータ
+- `src/db/schema.ts` データベースの表の設計（Drizzle）
+- `src/db/index.ts` Neonへの接続
 
 ## メンバー
 <!-- 自分の名前と一言を足してください -->
