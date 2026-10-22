@@ -32,9 +32,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               <span className="cursor-pointer rounded px-2.5 py-1.5 hover:bg-white/10">
                 マイページ
               </span>
-              <span className="cursor-pointer rounded px-2.5 py-1.5 hover:bg-white/10">
-                ログイン
-              </span>
+              <Link href="/login">
+                <button>
+                  ログイン
+                </button>
+              </Link>
               <span className="cursor-pointer rounded bg-white px-3 py-1.5 text-[#8e1728] shadow-sm">
                 新規登録
               </span>
