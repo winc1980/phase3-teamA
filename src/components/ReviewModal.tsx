@@ -2,6 +2,15 @@
 
 import { useState } from "react";
 
+const TAGS = [
+  "テストあり",
+  "レポートあり",
+  "出席重視",
+  "オンライン併用",
+  "グループワーク",
+  "過去問あり",
+];
+
 type ReviewModalProps = {
   courseTitle?: string;
   onClose?: () => void;
@@ -13,6 +22,13 @@ export function ReviewModal({
 }: ReviewModalProps) {
   const [easy, setEasy] = useState("4.5");
   const [fun, setFun] = useState("4.5");
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+
+  const toggleTag = (tag: string) => {
+    setSelectedTags((prev) =>
+      prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag],
+    );
+  };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
@@ -59,6 +75,26 @@ export function ReviewModal({
               />
               <span className="text-sm font-bold text-rose-600">♥ {fun}</span>
             </div>
+          </div>
+        </div>
+
+        <div className="mb-5">
+          <p className="mb-2 text-sm font-bold">特徴タグ選択（複数可）</p>
+          <div className="flex flex-wrap gap-2">
+            {TAGS.map((tag) => (
+              <button
+                key={tag}
+                type="button"
+                onClick={() => toggleTag(tag)}
+                className={`rounded-full border px-3 py-1 text-sm font-medium ${
+                  selectedTags.includes(tag)
+                    ? "border-[#8b1a2b] bg-rose-50 text-[#8b1a2b]"
+                    : "border-neutral-300 bg-neutral-50 text-neutral-600"
+                }`}
+              >
+                {tag}
+              </button>
+            ))}
           </div>
         </div>
       </div>
