@@ -23,6 +23,7 @@ export function ReviewModal({
   const [easy, setEasy] = useState("4.5");
   const [fun, setFun] = useState("4.5");
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const [comment, setComment] = useState("");
 
   const toggleTag = (tag: string) => {
     setSelectedTags((prev) =>
@@ -96,6 +97,19 @@ export function ReviewModal({
               </button>
             ))}
           </div>
+        </div>
+
+        <div className="mb-6">
+          <label className="mb-2 block text-sm font-bold">
+            コメント・対策アドバイス
+          </label>
+          <textarea
+            rows={3}
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+            placeholder="授業の感想やテスト・レポート対策、先生の人柄など"
+            className="w-full resize-none rounded-lg border border-neutral-300 p-3 text-sm"
+          />
         </div>
       </div>
     </div>
