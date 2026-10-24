@@ -1,13 +1,12 @@
 "use client";
 import Link from "next/link";
-import { courses} from "@/data/dummy";
+import {averageEasy ,averageInteresting, courses} from "@/data/dummy";
 import Header from "@/app/layout";
 import { useState } from 'react'
 
 export default function ClassDetail(){
     const [faviorate, setfaviorate] = useState(false)
-    const course = courses.find((course) => course.id === 1);
-                           
+    const course = courses.find((course) => course.id === 1);    
     return(
         <div className="min-h-screen bg-gray-100 w-full">
             <div className="flex flex-col gap-y-2">
@@ -31,11 +30,17 @@ export default function ClassDetail(){
 
                 <div className="bg-white border rounded-xl border-gray-300 grid grid-cols-2 grid-rows-2 p-4 flex items-center text-center my-1">
                     <div className="col-start-1 col-end-2 text-bold text-xl text-gray-500 flex flex-col justify-start">
-                        楽単度:/5
+                        楽単度
+                    </div>
+                    <div className="grid grid-cols-2 row-start-2 col-start-1 col-end-2 ">
+                            <div className="col-start-2 font-bold text-red-300 text-3xl">{averageEasy(course)}/5</div>
                     </div>
                     <div className="row-start-1 row-span-2 col-start-2 h-20 border-l-2 border-gray-400"></div>
                     <div className="row-start-1 col-end-3 text-bold text-gray-500 text-xl">
                         おもしろさ
+                    </div>
+                    <div className="grid grid-cols-2 row-start-2 col-start-2 col-end-3 ">
+                        <div className="col-start-2 font-bold text-yellow-400 text-3xl">{averageInteresting(course)}/5</div>
                     </div>
                 </div>
                 <div className="bg-white border rounded-xl border-gray-300 grid grid-cols-5 grid-rows-3 p-4 text-center">
