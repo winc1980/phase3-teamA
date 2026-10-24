@@ -18,7 +18,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               ◆ 早大単位ナビ
             </Link>
 
-            {/* ヘッダー内の検索バーを追加（スマホでは非表示、PCで表示） */}
+            {/* ヘッダー内の検索バーを追加 */}
             <div className="hidden sm:block flex-1 max-w-xs">
               <input
                 type="text"
@@ -27,11 +27,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               />
             </div>
 
-            {/* ヘッダーの右にあるログインボタンなどを追加（見た目だけ） */}
+            {/* ヘッダーの右にあるログインボタンなどを追加 */}
             <div className="flex items-center gap-2 text-xs font-bold">
-              <span className="cursor-pointer rounded px-2.5 py-1.5 hover:bg-white/10">
+              <Link href="/mypage" className="cursor-pointer rounded px-2.5 py-1.5 hover:bg-white/10">
                 マイページ
-              </span>
+              </Link>
               <span className="cursor-pointer rounded px-2.5 py-1.5 hover:bg-white/10">
                 ログイン
               </span>
