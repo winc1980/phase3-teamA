@@ -3,9 +3,18 @@ import Link from "next/link";
 export default function LoginPage() {
   return (
       <main className="max-w-md mx-auto mt-20">
-          <div className="bg-white p-10 rouded-lg shadow mt-32">
+          <Link
+              href="/"
+              className="text-sm text-gray-600"
+          >
+              ← 授業一覧に戻る
+          </Link>
+          <div className="bg-white p-10 rouded-lg shadow">
             <div className="flex justify-center gap-16 mb-8">
-                  <Link href="/login">
+                  <Link
+                      href="/login"
+                      className="text-center w-24 border-b-4 border-red-800 pb-2 font-bold text-red-800"
+                  >
                       ログイン
                   </Link>
                 
