@@ -53,6 +53,26 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-6">
           {children}
         </main>
+        
+        {/*フッターを追加*/}
+        <footer className="bg-zinc-800 text-zinc-400 py-6">
+          <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-4 px-4 sm:flex-row">
+            <p className="text-xs">
+              &copy; 2026 早大単位ナビ All rights reserved.
+            </p>
+            <div className="flex gap-4 text-xs">
+              <Link href="/terms" className="hover:text-white transition-colors">
+                利用規約
+              </Link>
+              <Link href="/privacy" className="hover:text-white transition-colors">
+                プライバシーポリシー
+              </Link>
+              <Link href="/contact" className="hover:text-white transition-colors">
+                お問い合わせ
+              </Link>
+            </div>
+          </div>
+        </footer>
       </body>
     </html>
   );
