@@ -11,14 +11,23 @@ const TAGS = [
   "過去問あり",
 ];
 
+export type ReviewInput = {
+  easy: number;
+  fun: number;
+  tags: string[];
+  comment: string;
+};
+
 type ReviewModalProps = {
   courseTitle?: string;
   onClose?: () => void;
+  onSubmit?: (review: ReviewInput) => void;
 };
 
 export function ReviewModal({
   courseTitle = "政治学原論",
   onClose,
+  onSubmit,
 }: ReviewModalProps) {
   const [easy, setEasy] = useState("4.5");
   const [fun, setFun] = useState("4.5");
@@ -29,6 +38,17 @@ export function ReviewModal({
     setSelectedTags((prev) =>
       prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag],
     );
+  };
+
+  const handleSubmit = () => {
+    const review = {
+      easy: Number(easy),
+      fun: Number(fun),
+      tags: selectedTags,
+      comment,
+    };
+    console.log(review);
+    onSubmit?.(review);
   };
 
   return (
@@ -111,6 +131,21 @@ export function ReviewModal({
             className="w-full resize-none rounded-lg border border-neutral-300 p-3 text-sm"
           />
         </div>
+
+        <button
+          type="button"
+          onClick={handleSubmit}
+          className="w-full rounded-full bg-[#8b1a2b] py-3 text-base font-bold text-white hover:bg-[#6f1422]"
+        >
+          投稿を完了する
+        </button>
+        <button
+          type="button"
+          onClick={onClose}
+          className="mt-3 block w-full text-center text-sm text-neutral-400 hover:underline"
+        >
+          キャンセル
+        </button>
       </div>
     </div>
   );
