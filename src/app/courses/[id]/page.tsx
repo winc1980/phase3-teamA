@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { courses, averageEasy, stars } from "@/data/dummy";
-
+import { averageEasy, courses, stars } from "@/data/dummy";
+  
 // ダミーデータの授業IDを、ビルド時に全部ページにしておく
 export function generateStaticParams() {
   return courses.map((c) => ({ id: String(c.id) }));
