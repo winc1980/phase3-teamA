@@ -21,7 +21,7 @@ export const courses: Course[] = [
     id: 1,
     name: "線形代数A",
     teacher: "山田先生",
-    faculty: "基幹",
+    faculty: "基幹理工",
     day: "月",
     period: 2,
     reviews: [
@@ -33,7 +33,7 @@ export const courses: Course[] = [
     id: 2,
     name: "プログラミング入門",
     teacher: "佐藤先生",
-    faculty: "基幹",
+    faculty: "基幹理工",
     day: "月",
     period: 2,
     reviews: [{ id: 3, easy: 3, text: "毎週の課題が重い。でも力はつく。", helpful: 5 }],
