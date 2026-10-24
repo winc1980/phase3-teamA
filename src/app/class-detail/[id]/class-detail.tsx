@@ -3,6 +3,7 @@ import { courses} from "@/data/dummy";
 import Header from "@/app/layout";
 import FavButton from "@/components/fav";
 import { notFound } from "next/navigation";
+import { averageEasy, stars } from "@/data/dummy";
 
 export function generateStaticParams() {
   return courses.map((c) => ({ id: String(c.id) }));
@@ -15,13 +16,13 @@ export default async function ClassDetail({ params }: { params: Promise<{ id: st
 
     return(
         <div className="min-h-screen bg-gray-100 w-full">
-            <div className="flex flex-col gap-y-2">
+            <div className="flex flex-col gap-y-2 mx-6">
                 <div className="grid grid-cols-4 grid-rows-3 font-bold text-center">
                     <div className="col-span-1 row-start-1 justify-end flex flex-col text-gray-400 w-full">
                         <p>[{course?.faculty}学部]</p>
                     </div>
                     <div className="col-span-1 row-start-2 justify-center flex flex-col text-black-100 text-3xl">
-                        <p>{course?.name}</p>
+                        <p className ="text-zinc-900">{course?.name}</p>
                     </div>
                     <div className="col-span-1 row-start-3 justify-start flex flex-col text-gray-400">
                         担当教員：{course?.teacher}
@@ -51,19 +52,23 @@ export default async function ClassDetail({ params }: { params: Promise<{ id: st
                     <div className="text-gray-500 text-s row-start-3">単位</div>
                     <div className="text-gray-500 text-s row-start-3">人数</div>
                 </div>
-                <div className="grid grid-cols-5 p-4 font-bold ">
-                    <div className="col-start-1 col-end-3 text-xl">
-                        レビュー・コメント（件）
+                <div className="grid grid-cols-1 gap-3">
+                    <p className="text-lg font-bold text-zinc-900">レビュー・コメント（{course.reviews.length} 件）</p>
+                    {course?.reviews.map((review) => (
+                    <div key={review.id} className="bg-white border rounded-xl p-4">
+                        <span className="font-bold text-amber-500">
+                            {stars(review.easy)}{" "}
+                            <span className="ml-1 text-zinc-800">
+                            {review.easy.toFixed(1)}
+                            </span>
+                        </span>
+                        <p className="text-zinc-900">{review.text}</p>
+                        <button className="block ml-auto text-black py-2 px-4 rounded-3xl border border-gray-500 duration-300 ">
+                            ↑参考になった：{review.helpful}
+                        </button>
                     </div>
-                        {course?.reviews.map((review) => (
-                        <div key={review.id} className="bg-white border rounded-xl p-4">
-                            <p>楽単度：{review.easy}</p>
-                            <p>{review.text}</p>
-                            <p>参考になった：{review.helpful}</p>
-                        </div>
-                        ))}
+                    ))}
                 </div>
-
             </div>
         </div>
     );
