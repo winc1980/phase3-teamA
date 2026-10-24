@@ -29,9 +29,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
 
             {/* ヘッダーの右にあるログインボタンなどを追加（見た目だけ） */}
             <div className="flex items-center gap-2 text-xs font-bold">
-              <span className="cursor-pointer rounded px-2.5 py-1.5 hover:bg-white/10">
+              <Link href="/mypage" className="cursor-pointer rounded px-2.5 py-1.5 hover:bg-white/10">
                 マイページ
-              </span>
+              </Link>
               <span className="cursor-pointer rounded px-2.5 py-1.5 hover:bg-white/10">
                 ログイン
               </span>
