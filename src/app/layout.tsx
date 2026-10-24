@@ -50,7 +50,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </header>
 
         {/* メイン画面（ここに page.tsx の中身が入る） */}
-        <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-6">
+        <main className="mx-auto w-full flex-1 px-0 pb-0">
           {children}
         </main>
       </body>
