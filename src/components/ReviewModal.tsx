@@ -12,6 +12,7 @@ export function ReviewModal({
   onClose,
 }: ReviewModalProps) {
   const [easy, setEasy] = useState("4.5");
+  const [fun, setFun] = useState("4.5");
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
@@ -41,6 +42,22 @@ export function ReviewModal({
                 className="w-20 rounded-md border border-neutral-300 px-2 py-1 text-sm"
               />
               <span className="text-sm font-bold text-amber-500">★ {easy}</span>
+            </div>
+          </div>
+
+          <div>
+            <p className="mb-2 text-sm font-bold">面白さ（♡）</p>
+            <div className="flex items-center justify-between">
+              <input
+                type="number"
+                min={1}
+                max={5}
+                step={0.5}
+                value={fun}
+                onChange={(e) => setFun(e.target.value)}
+                className="w-20 rounded-md border border-neutral-300 px-2 py-1 text-sm"
+              />
+              <span className="text-sm font-bold text-rose-600">♥ {fun}</span>
             </div>
           </div>
         </div>
