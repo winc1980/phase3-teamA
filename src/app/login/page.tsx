@@ -31,30 +31,29 @@ export default function LoginPage() {
             </h1>
             
             <label className="block mb-2">
-                ユーザー名
-            </label>
-            
+                ユーザー名        
             <input
                 type="text"
                 className="w-full border border-gray-300 rounded p-2 mb-6"
             />
+            </label>
             
             <label className="block mb-2">
                 パスワード
-            </label>
             <input
                 type="password"
                 className="w-full border border-gray-300 rounded p-2 mb-6"
             />
+            </label>
             
             <p className="text-right text-sm text-red-800 mb-6">
                 パスワードをお忘れですか？
             </p>
 
-            <button
-                className="w-full bg-red-800 text-white py-3 rounded-full">
+            <button type="button" 
+                className="w-full bg-red-800 text-white py-3 rounded-full cursor-pointer">
                 ログインする
-            　</button>
+            </button>
 
           </div>
     </main>

@@ -55,7 +55,7 @@ export default function Mypage() {
             : 0;
             const maxlength = 20;
             const displaytext = course?.reviews?.[representTextIndex]?.text.length > maxlength
-            ? course?.reviews?.[representTextIndex]?.text.slice(0, maxlength) + "..."
+            ? `${course?.reviews?.[representTextIndex]?.text.slice(0, maxlength)}...`
             : course?.reviews?.[representTextIndex]?.text;
             return (
               <li key={course.id}>
