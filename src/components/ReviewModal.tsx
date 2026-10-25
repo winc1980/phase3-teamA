@@ -120,10 +120,11 @@ export function ReviewModal({
         </div>
 
         <div className="mb-6">
-          <label className="mb-2 block text-sm font-bold">
+          <label htmlFor="comment" className="mb-2 block text-sm font-bold">
             コメント・対策アドバイス
           </label>
           <textarea
+            id="comment"
             rows={3}
             value={comment}
             onChange={(e) => setComment(e.target.value)}
