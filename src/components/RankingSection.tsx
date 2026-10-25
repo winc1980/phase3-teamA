@@ -93,7 +93,7 @@ export default function RankingSection() {
           return (
             <li key={course.id}>
               <Link
-                href={`/courses/${course.id}`}
+                href="/class-detail"
                 className="flex items-start gap-4 rounded-xl border border-zinc-200 bg-white p-5 shadow-sm transition hover:border-[#8e1728] hover:shadow-md"
               >
                 <div className="flex flex-col items-center justify-center pt-0.5">
