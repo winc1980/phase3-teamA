@@ -50,8 +50,8 @@ export default function LoginPage() {
                 パスワードをお忘れですか？
             </p>
 
-            <button type="submit"
-                className="w-full bg-red-800 text-white py-3 rounded-full">
+            <button type="button" 
+                className="w-full bg-red-800 text-white py-3 rounded-full cursor-pointer">
                 ログインする
             </button>
 
