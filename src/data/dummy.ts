@@ -2,6 +2,7 @@
 export type Review = {
   id: number;
   easy: number; // 単位の取りやすさ（1〜5）
+  interesting: number;
   text: string;
   helpful: number; // 「役に立った」の数
 };
@@ -25,8 +26,8 @@ export const courses: Course[] = [
     day: "月",
     period: 2,
     reviews: [
-      { id: 1, easy: 4, text: "出欠はゆるい。テストは過去問から多めに出る。", helpful: 8 },
-      { id: 2, easy: 5, text: "説明が丁寧で質問しやすい。", helpful: 3 },
+      { id: 1, easy: 4 , interesting: 4, text: "出欠はゆるい。テストは過去問から多めに出る。", helpful: 8 },
+      { id: 2, easy: 5, interesting: 3, text: "説明が丁寧で質問しやすい。", helpful: 3 },
     ],
   },
   {
@@ -36,7 +37,7 @@ export const courses: Course[] = [
     faculty: "基幹理工",
     day: "月",
     period: 2,
-    reviews: [{ id: 3, easy: 3, text: "毎週の課題が重い。でも力はつく。", helpful: 5 }],
+    reviews: [{ id: 3, easy: 3, interesting:3, text: "毎週の課題が重い。でも力はつく。", helpful: 5 }],
   },
   {
     id: 3,
@@ -55,7 +56,14 @@ export function averageEasy(course: Course): number {
   return sum / course.reviews.length;
 }
 
+export function averageInteresting(course: Course): number {
+  if (course.reviews.length === 0) return 0;
+  const sum = course.reviews.reduce((total, r) => total + r.interesting, 0);
+  return sum / course.reviews.length;
+}
+
 export function stars(score: number): string {
   const n = Math.round(score);
   return "★".repeat(n) + "☆".repeat(5 - n);
 }
+
