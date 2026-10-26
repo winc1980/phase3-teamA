@@ -8,11 +8,38 @@ export function generateStaticParams() {
   return courses.map((c) => ({ id: String(c.id) }));
 }
 
+function Stars({ rating }: { rating: number }) {
+    const roundedRating = Math.round(rating);
+
+    return (
+        <div className="flex text-yellow-500 text-2xl">
+            {Array.from({ length: 5 }, (_, i) => (
+                <span key={i} style={{ color: "#eab308" }}>
+                    {i < roundedRating ? "★" : "☆"}
+                </span>
+            ))}
+        </div>
+    );
+}
+
+function Hearts({ rating }: { rating: number }) {
+    const roundedRating = Math.round(rating);
+
+    return (
+        <div className="flex text-red-800 text-3xl">
+            {Array.from({ length: 5 }, (_, i) => (
+                <span key={i} style={{ color: "#f22323" }}>
+                    {i < roundedRating ? "♥" : "♡"}
+                </span>
+            ))}
+        </div>
+    );
+}
+
 export default async function ClassDetail({ params }: { params: Promise<{ id: string }> }){
     const { id } = await params;
     const course = courses.find((course) => course.id === Number(id));
     if (!course) notFound();
-
     return(
         <div className="min-h-screen bg-gray-100 w-full">
             <div className="flex flex-col gap-y-2">
@@ -33,15 +60,25 @@ export default async function ClassDetail({ params }: { params: Promise<{ id: st
                     <div className="col-start-1 col-end-2 text-bold text-xl text-gray-500 flex flex-col justify-start">
                         楽単度
                     </div>
-                    <div className="grid grid-cols-2 row-start-2 col-start-1 col-end-2 ">
-                            <div className="col-start-2 font-bold text-red-300 text-3xl">{averageEasy(course)}/5</div>
+                    <div className="grid grid-cols-2 row-start-2 col-start-1 col-end-2 w-full">
+                        <div className="flex text-yellow-500 text-3xl justify-center">
+                            <Stars rating={averageEasy(course)} />
+                        </div>
+                        <div className="col-start-2 text-yellow-500 font-bold text-3xl">
+                            {averageEasy(course)}/5
+                        </div>
                     </div>
                     <div className="row-start-1 row-span-2 col-start-2 h-20 border-l-2 border-gray-400"></div>
                     <div className="row-start-1 col-end-3 text-bold text-gray-500 text-xl">
                         おもしろさ
                     </div>
-                    <div className="grid grid-cols-2 row-start-2 col-start-2 col-end-3 ">
-                        <div className="col-start-2 font-bold text-yellow-400 text-3xl">{averageInteresting(course)}/5</div>
+                    <div className="grid grid-cols-2 row-start-2 col-start-2 col-end-3 justify-center">
+                        <div className="flex text-red-300 text-3xl justify-center">
+                            <Hearts rating={averageInteresting(course)} />
+                        </div>
+                        <div className="col-start-2 font-bold text-red-600 text-3xl justify-center">
+                            {averageInteresting(course)}/5
+                        </div>
                     </div>
                 </div>
                 <div className="bg-white border rounded-xl border-gray-300 grid grid-cols-5 grid-rows-3 p-4 text-center">

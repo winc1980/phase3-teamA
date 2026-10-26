@@ -66,3 +66,4 @@ export function stars(score: number): string {
   const n = Math.round(score);
   return "★".repeat(n) + "☆".repeat(5 - n);
 }
+
