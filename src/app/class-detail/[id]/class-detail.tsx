@@ -3,7 +3,7 @@ import {averageEasy ,averageInteresting, courses} from "@/data/dummy";
 import Header from "@/app/layout";
 import FavButton from "@/components/fav";
 import { notFound } from "next/navigation";
-import { averageEasy, stars } from "@/data/dummy";
+import {stars } from "@/data/dummy";
 
 export function generateStaticParams() {
   return courses.map((c) => ({ id: String(c.id) }));
