@@ -29,18 +29,18 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
 
             {/* ヘッダーの右にあるログインボタンなどを追加 */}
 
-            <div className="flex items-center gap-2 text-xs font-bold">
-              <Link href="/mypage" className="cursor-pointer rounded px-2.5 py-1.5 hover:bg-white/10">   
+            <div className="flex items-center gap-1 text-xs font-bold">
+              <Link href="/mypage" className="cursor-pointer rounded px-0.75 py-1.5 hover:bg-white/10">   
                 <span className="cursor-pointer rounded bg-white px-3 py-1.5 text-[#8e1728] shadow-sm">        
                 マイページ
                 </span>
               </Link>    
-              <Link href="/login">
+              <Link href="/login" className="cursor-pointer rounded px-0.75 py-1.5 hover:bg-white/10">
                 <span className="cursor-pointer rounded bg-white px-3 py-1.5 text-[#8e1728] shadow-sm">
                   ログイン
                 </span>    
               </Link>
-              <Link href="/register">
+              <Link href="/register" className="cursor-pointer rounded px-0.75 py-1.5 hover:bg-white/10">
                 <span className="cursor-pointer rounded bg-white px-3 py-1.5 text-[#8e1728] shadow-sm">
                   新規登録
                 </span>
@@ -50,9 +50,29 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </header>
 
         {/* メイン画面（ここに page.tsx の中身が入る） */}
-        <main className="mx-auto w-full flex-1 px-0 pb-0">
+        <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-6">
           {children}
         </main>
+        
+        {/*フッターを追加*/}
+        <footer className="bg-zinc-800 text-zinc-400 py-6">
+          <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-4 px-4 sm:flex-row">
+            <p className="text-xs">
+              &copy; 2026 早大単位ナビ All rights reserved.
+            </p>
+            <div className="flex gap-4 text-xs">
+              <Link href="/terms" className="hover:text-white transition-colors">
+                利用規約
+              </Link>
+              <Link href="/privacy" className="hover:text-white transition-colors">
+                プライバシーポリシー
+              </Link>
+              <Link href="/contact" className="hover:text-white transition-colors">
+                お問い合わせ
+              </Link>
+            </div>
+          </div>
+        </footer>
       </body>
     </html>
   );

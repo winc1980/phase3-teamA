@@ -1,7 +1,6 @@
 import Link from "next/link";
-import { averageEasy, courses, stars } from "@/data/dummy";
-import { max } from "drizzle-orm";
 import React from "react";
+import { averageEasy, courses, stars } from "@/data/dummy";
 
 
 // 曜日と時限の定義
@@ -33,11 +32,12 @@ export default function Mypage() {
   return (
     <div className="grid grid-cols-2 gap-6">
       {/* 左半分 */}
-      <div className="rounded-lg bg-white p-4 shadow-md">
+      <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
         <p className="font-bold text-gray-800">自分のコメント・評価一覧</p>
-        <hr className="my-2 border-t-2 border-gray-200" />
+        <hr className="my-3 border-t border-gray-200" />
         {/* 左側に入れたい内容をここに書く */}
 
+        <ul className="list-none space-y-4">
         {courses.map((course) => {
             
             const avg = averageEasy(course);
@@ -55,7 +55,7 @@ export default function Mypage() {
             : 0;
             const maxlength = 20;
             const displaytext = course?.reviews?.[representTextIndex]?.text.length > maxlength
-            ? course?.reviews?.[representTextIndex]?.text.slice(0, maxlength) + "..."
+            ? `${course?.reviews?.[representTextIndex]?.text.slice(0, maxlength)}...`
             : course?.reviews?.[representTextIndex]?.text;
             return (
               <li key={course.id}>
@@ -78,15 +78,13 @@ export default function Mypage() {
 
                   {/* 星評価の表示 */}
                   <div className="mt-2 flex items-center gap-3 text-sm">
-                    {course.reviews.length > 0 && (
-                      <>
+                    {course.reviews.length > 0 && (                    
                         <span className="font-bold text-amber-500">
                           {stars(avg)}{" "}
                           <span className="ml-1 text-zinc-800">
                             {avg.toFixed(1)}
                           </span>
                         </span>
-                      </>
                     )}
                   </div>
 
@@ -119,6 +117,7 @@ export default function Mypage() {
           }
         )
         }
+        </ul>
     </div>
 
       {/* 右半分 */}

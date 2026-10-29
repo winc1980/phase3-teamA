@@ -46,7 +46,7 @@ export const courses: Course[] = [
     faculty: "基幹",
     day: "月",
     period: 2,
-    reviews: [],
+    reviews: [{ id: 2, easy: 2, text: "期末試験が難しい。単位が来れば御の字。", helpful: 1 }],
   },
 ];
 
