@@ -5,7 +5,7 @@ export default function FavButton() {
     const [faviorate, setfaviorate] = useState(false)
 
     return (
-    <div className="col-start-4 row-start-2 row-end-4 flex flex-col items-center justify-center text-center">
+    <div className="col-start-4 row-start-1 row-end-4 flex flex-col items-center justify-center text-center">
 
         <button onClick={() => setfaviorate(prev => !prev)}>
             {faviorate

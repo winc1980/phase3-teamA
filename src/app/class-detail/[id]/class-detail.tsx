@@ -42,7 +42,7 @@ export default async function ClassDetail({ params }: { params: Promise<{ id: st
     const course = courses.find((course) => course.id === Number(id));
     if (!course) notFound();
     return(
-        <div className="min-h-screen bg-gray-100 w-full">
+        <div className="min-h-screen bg-white-100 w-full">
             <div className="flex flex-col gap-y-2 mx-6">
                 <div className="grid grid-cols-4 grid-rows-3 font-bold text-center">
                     <div className="col-span-1 row-start-1 justify-end flex flex-col text-gray-400 w-full">
@@ -57,7 +57,7 @@ export default async function ClassDetail({ params }: { params: Promise<{ id: st
                     <FavButton/>
                 </div>
 
-                <div className="bg-white border rounded-xl border-gray-300 grid grid-cols-2 grid-rows-2 p-4 flex items-center text-center my-1">
+                <div className="bg-white border rounded-xl border-gray-300 grid grid-cols-2 grid-rows-2 p-4 flex items-center text-center my-1 shadow-sm border-[#8e1728]">
                     <div className="col-start-1 col-end-2 text-bold text-xl text-gray-500 flex flex-col justify-start">
                         楽単度
                     </div>
@@ -82,7 +82,8 @@ export default async function ClassDetail({ params }: { params: Promise<{ id: st
                         </div>
                     </div>
                 </div>
-                <div className="bg-white border rounded-xl border-gray-300 grid grid-cols-5 grid-rows-3 p-4 text-center">
+
+                <div className="bg-white border rounded-xl border-gray-300 grid grid-cols-5 grid-rows-3 p-4 text-center shadow-sm border-[#8e1728]">
                     <div className="col-start-1 col-end-2 text-bold text-xl text-black">
                         成績評価の割合
                     </div>
@@ -95,7 +96,7 @@ export default async function ClassDetail({ params }: { params: Promise<{ id: st
                     <div className="text-gray-500 text-s row-start-3">単位</div>
                     <div className="text-gray-500 text-s row-start-3">人数</div>
                 </div>
-                <div className="grid grid-cols-1 gap-3">
+                <div className="grid grid-cols-1 gap-3 shadow-sm hover:border-[#8e1728]">
                     <p className="text-lg font-bold text-zinc-900">レビュー・コメント（{course.reviews.length} 件）</p>
                     {course?.reviews.map((review) => (
                     <div key={review.id} className="bg-white border rounded-xl p-4">
