@@ -1,8 +1,8 @@
 "use client";
+import { useState } from 'react';
 import Link from "next/link";
-import { courses} from "@/data/dummy";
 import Header from "@/app/layout";
-import { useState } from 'react'
+import { courses } from "@/data/dummy";
 
 export default function ClassDetail(){
     const [faviorate, setfaviorate] = useState(false)
@@ -21,8 +21,8 @@ export default function ClassDetail(){
                     <div className="col-span-1 row-start-3 justify-start flex flex-col text-gray-400">
                         担当教員：{course?.teacher}
                     </div>
-                    <button onClick={() => setfaviorate(prev => !prev)} className="col-start-4 row-start-1 row-end-3 flex items-center justify-center">
-                        {faviorate ? <img src='/images/favorite_on_transparent.png' className="w-20 h-25 justify-center"/> : <img src='/images/favorite_off_transparent.png' className="w-20 h-25 "/> }
+                    <button type="button" onClick={() => setfaviorate(prev => !prev)} className="col-start-4 row-start-1 row-end-3 flex items-center justify-center">
+                        {faviorate ? <img src='/images/favorite_on_transparent.png' className="w-20 h-25 justify-center" alt=""/> : <img src='/images/favorite_off_transparent.png' className="w-20 h-25 "alt=""/> }
                     </button>
                     <div className="col-start-4 row-start-3 row-end-3 text-center">
                         {faviorate ? <div className="text-[#8e1728]">お気に入り</div> : <div></div> }
