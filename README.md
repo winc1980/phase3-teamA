@@ -47,7 +47,3 @@ npm run dev
 - `src/data/dummy.ts` 開発用のダミーデータ
 - `src/db/schema.ts` データベースの表の設計（Drizzle）
 - `src/db/index.ts` Neonへの接続
-
-## メンバー
-<!-- 自分の名前と一言を足してください -->
-- 藁谷：技術要件担当
