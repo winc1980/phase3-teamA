@@ -55,7 +55,6 @@ export function ReviewModal({
       tags: selectedTags,
       comment,
     };
-    console.log(review);
     onSubmit?.(review);
   };
 
