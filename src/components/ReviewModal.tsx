@@ -109,7 +109,7 @@ export function ReviewModal({
                 onClick={() => toggleTag(tag)}
                 className={`rounded-full border px-3 py-1 text-sm font-medium ${
                   selectedTags.includes(tag)
-                    ? "border-[#8b1a2b] bg-rose-50 text-[#8b1a2b]"
+                    ? "border-[#8e1728] bg-rose-50 text-[#8e1728]"
                     : "border-neutral-300 bg-neutral-50 text-neutral-600"
                 }`}
               >
@@ -136,7 +136,7 @@ export function ReviewModal({
         <button
           type="button"
           onClick={handleSubmit}
-          className="w-full rounded-full bg-[#8b1a2b] py-3 text-base font-bold text-white hover:bg-[#6f1422]"
+          className="w-full rounded-full bg-[#8e1728] py-3 text-base font-bold text-white hover:bg-[#6f1422]"
         >
           投稿を完了する
         </button>
