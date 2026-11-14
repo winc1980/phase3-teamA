@@ -9,33 +9,63 @@ export function generateStaticParams() {
   return courses.map((c) => ({ id: String(c.id) }));
 }
 
-function Stars({ rating }: { rating: number }) {
-    const roundedRating = Math.round(rating);
-
-    return (
-        <div className="flex text-yellow-500 text-2xl">
-            {Array.from({ length: 5 }, (_, i) => (
-                <span key={i} style={{ color: "#eab308" }}>
-                    {i < roundedRating ? "★" : "☆"}
-                </span>
-            ))}
-        </div>
-    );
-}
 
 function Hearts({ rating }: { rating: number }) {
-    const roundedRating = Math.round(rating);
-
     return (
-        <div className="flex text-red-800 text-3xl">
-            {Array.from({ length: 5 }, (_, i) => (
-                <span key={i} style={{ color: "#f22323" }}>
-                    {i < roundedRating ? "♥" : "♡"}
-                </span>
-            ))}
+        <div className="flex text-3xl">
+            {Array.from({ length: 5 }, (_, i) => {
+                const percentage = Math.max(
+                    0,
+                    Math.min(1, rating - i)
+                ) * 100;
+
+                return (
+                    <span
+                        key={i}
+                        style={{
+                            background: `linear-gradient(to right, #BC1A33 ${percentage}%, #F4F4F5 ${percentage}%)`,
+                            backgroundClip: "text",
+                            WebkitBackgroundClip: "text",
+                            color: "transparent"
+                        }}
+                    >
+                        ❤︎
+                    </span>
+                );
+            })}
         </div>
     );
 }
+
+
+function Stars({ rating }: { rating: number }) {
+    return (
+        <div className="flex text-3xl">
+            {Array.from({ length: 5 }, (_, i) => {
+                const percentage = Math.max(
+                    0,
+                    Math.min(1, rating - i)
+                ) * 100;
+
+                return (
+                    <span
+                        key={i}
+                        style={{
+                            background: `linear-gradient(to right, #e8e06f ${percentage}%, #F4F4F5 ${percentage}%)`,
+                            backgroundClip: "text",
+                            WebkitBackgroundClip: "text",
+                            color: "transparent"
+                        }}
+                    >
+                        ★
+                    </span>
+                );
+            })}
+        </div>
+    );
+}
+
+
 
 export default async function ClassDetail({ params }: { params: Promise<{ id: string }> }){
     const { id } = await params;
