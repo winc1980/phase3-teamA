@@ -3,66 +3,11 @@ import {averageEasy ,averageInteresting, courses} from "@/data/dummy";
 import Header from "@/app/layout";
 import FavButton from "@/components/fav";
 import { notFound } from "next/navigation";
-import {stars } from "@/data/dummy";
+import { Hearts } from "@/components/hearts";
+import { Stars } from "@/components/stars";
 
 export function generateStaticParams() {
   return courses.map((c) => ({ id: String(c.id) }));
-}
-
-
-function Hearts({ rating }: { rating: number }) {
-    return (
-        <div className="flex text-3xl">
-            {Array.from({ length: 5 }, (_, i) => {
-                const percentage = Math.max(
-                    0,
-                    Math.min(1, rating - i)
-                ) * 100;
-
-                return (
-                    <span
-                        key={i}
-                        style={{
-                            background: `linear-gradient(to right, #BC1A33 ${percentage}%, #F4F4F5 ${percentage}%)`,
-                            backgroundClip: "text",
-                            WebkitBackgroundClip: "text",
-                            color: "transparent"
-                        }}
-                    >
-                        ❤︎
-                    </span>
-                );
-            })}
-        </div>
-    );
-}
-
-
-function Stars({ rating }: { rating: number }) {
-    return (
-        <div className="flex text-3xl">
-            {Array.from({ length: 5 }, (_, i) => {
-                const percentage = Math.max(
-                    0,
-                    Math.min(1, rating - i)
-                ) * 100;
-
-                return (
-                    <span
-                        key={i}
-                        style={{
-                            background: `linear-gradient(to right, #e8e06f ${percentage}%, #F4F4F5 ${percentage}%)`,
-                            backgroundClip: "text",
-                            WebkitBackgroundClip: "text",
-                            color: "transparent"
-                        }}
-                    >
-                        ★
-                    </span>
-                );
-            })}
-        </div>
-    );
 }
 
 
@@ -131,7 +76,7 @@ export default async function ClassDetail({ params }: { params: Promise<{ id: st
                     {course?.reviews.map((review) => (
                     <div key={review.id} className="bg-white border rounded-xl p-4">
                         <span className="font-bold text-amber-500">
-                            {stars(review.easy)}{" "}
+                            <Stars rating={review.easy} />{" "}
                             <span className="ml-1 text-zinc-800">
                             {review.easy.toFixed(1)}
                             </span>
