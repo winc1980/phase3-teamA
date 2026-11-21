@@ -13,9 +13,9 @@ const TAGS = [
 
 export type ReviewInput = {
   easy: number;
-  fun: number;
+  interesting: number;
   tags: string[];
-  comment: string;
+  text: string;
 };
 
 type ReviewModalProps = {
@@ -51,9 +51,9 @@ export function ReviewModal({
     if (!canSubmit) return;
     const review = {
       easy: Number(easy),
-      fun: Number(fun),
+      interesting: Number(fun),
       tags: selectedTags,
-      comment,
+      text: comment,
     };
     onSubmit?.(review);
   };
@@ -114,11 +114,10 @@ export function ReviewModal({
                 key={tag}
                 type="button"
                 onClick={() => toggleTag(tag)}
-                className={`rounded-full border px-3 py-1 text-sm font-medium ${
-                  selectedTags.includes(tag)
-                    ? "border-[#8e1728] bg-rose-50 text-[#8e1728]"
-                    : "border-neutral-300 bg-neutral-50 text-neutral-600"
-                }`}
+                className={`rounded-full border px-3 py-1 text-sm font-medium ${selectedTags.includes(tag)
+                  ? "border-[#8e1728] bg-rose-50 text-[#8e1728]"
+                  : "border-neutral-300 bg-neutral-50 text-neutral-600"
+                  }`}
               >
                 {tag}
               </button>
