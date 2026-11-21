@@ -3,39 +3,14 @@ import {averageEasy ,averageInteresting, courses} from "@/data/dummy";
 import Header from "@/app/layout";
 import FavButton from "@/components/fav";
 import { notFound } from "next/navigation";
-import {stars } from "@/data/dummy";
+import { Hearts } from "@/components/hearts";
+import { Stars } from "@/components/stars";
 
 export function generateStaticParams() {
   return courses.map((c) => ({ id: String(c.id) }));
 }
 
-function Stars({ rating }: { rating: number }) {
-    const roundedRating = Math.round(rating);
 
-    return (
-        <div className="flex text-yellow-500 text-2xl">
-            {Array.from({ length: 5 }, (_, i) => (
-                <span key={i} style={{ color: "#eab308" }}>
-                    {i < roundedRating ? "★" : "☆"}
-                </span>
-            ))}
-        </div>
-    );
-}
-
-function Hearts({ rating }: { rating: number }) {
-    const roundedRating = Math.round(rating);
-
-    return (
-        <div className="flex text-red-800 text-3xl">
-            {Array.from({ length: 5 }, (_, i) => (
-                <span key={i} style={{ color: "#f22323" }}>
-                    {i < roundedRating ? "♥" : "♡"}
-                </span>
-            ))}
-        </div>
-    );
-}
 
 export default async function ClassDetail({ params }: { params: Promise<{ id: string }> }){
     const { id } = await params;
@@ -101,7 +76,7 @@ export default async function ClassDetail({ params }: { params: Promise<{ id: st
                     {course?.reviews.map((review) => (
                     <div key={review.id} className="bg-white border rounded-xl p-4">
                         <span className="font-bold text-amber-500">
-                            {stars(review.easy)}{" "}
+                            <Stars rating={review.easy} />{" "}
                             <span className="ml-1 text-zinc-800">
                             {review.easy.toFixed(1)}
                             </span>
