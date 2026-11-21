@@ -5,6 +5,7 @@ import FavButton from "@/components/fav";
 import { notFound } from "next/navigation";
 import { Hearts } from "@/components/hearts";
 import { Stars } from "@/components/stars";
+import { ReviewButton } from "@/components/ReviewButton";
 
 export function generateStaticParams() {
   return courses.map((c) => ({ id: String(c.id) }));
@@ -72,6 +73,7 @@ export default async function ClassDetail({ params }: { params: Promise<{ id: st
                     <div className="text-gray-500 text-s row-start-3">人数</div>
                 </div>
                 <div className="grid grid-cols-1 gap-3 shadow-sm hover:border-[#8e1728]">
+                    <ReviewButton courseTitle={course.name} />
                     <p className="text-lg font-bold text-zinc-900">レビュー・コメント（{course.reviews.length} 件）</p>
                     {course?.reviews.map((review) => (
                     <div key={review.id} className="bg-white border rounded-xl p-4">
