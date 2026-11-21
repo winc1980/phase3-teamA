@@ -13,9 +13,9 @@ const TAGS = [
 
 export type ReviewInput = {
   easy: number;
-  fun: number;
+  interesting: number;
   tags: string[];
-  comment: string;
+  text: string;
 };
 
 type ReviewModalProps = {
@@ -40,14 +40,21 @@ export function ReviewModal({
     );
   };
 
+  const isScoreOk = (value: string) => {
+    const n = Number(value);
+    return n >= 1 && n <= 5;
+  };
+
+  const canSubmit = isScoreOk(easy) && isScoreOk(fun) && comment.trim() !== "";
+
   const handleSubmit = () => {
+    if (!canSubmit) return;
     const review = {
       easy: Number(easy),
-      fun: Number(fun),
+      interesting: Number(fun),
       tags: selectedTags,
-      comment,
+      text: comment,
     };
-    console.log(review);
     onSubmit?.(review);
   };
 
@@ -107,11 +114,10 @@ export function ReviewModal({
                 key={tag}
                 type="button"
                 onClick={() => toggleTag(tag)}
-                className={`rounded-full border px-3 py-1 text-sm font-medium ${
-                  selectedTags.includes(tag)
-                    ? "border-[#8b1a2b] bg-rose-50 text-[#8b1a2b]"
-                    : "border-neutral-300 bg-neutral-50 text-neutral-600"
-                }`}
+                className={`rounded-full border px-3 py-1 text-sm font-medium ${selectedTags.includes(tag)
+                  ? "border-[#8e1728] bg-rose-50 text-[#8e1728]"
+                  : "border-neutral-300 bg-neutral-50 text-neutral-600"
+                  }`}
               >
                 {tag}
               </button>
@@ -136,7 +142,8 @@ export function ReviewModal({
         <button
           type="button"
           onClick={handleSubmit}
-          className="w-full rounded-full bg-[#8b1a2b] py-3 text-base font-bold text-white hover:bg-[#6f1422]"
+          disabled={!canSubmit}
+          className="w-full rounded-full bg-[#8e1728] py-3 text-base font-bold text-white hover:bg-[#6f1422] disabled:cursor-not-allowed disabled:opacity-40"
         >
           投稿を完了する
         </button>
