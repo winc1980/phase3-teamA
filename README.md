@@ -36,9 +36,9 @@
 
 ## 起動方法
 ```bash
-npm install
+bun install
 cp .env.example .env.local   # DBやログインを使う時だけ値を入れる
-npm run dev
+bun dev
 ```
 ブラウザで http://localhost:3000 を開く。今はダミーデータ（`src/data/dummy.ts`）を表示している。
 
