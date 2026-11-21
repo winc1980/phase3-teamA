@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import { Hearts } from "@/components/hearts";
 import { Stars } from "@/components/stars";
 import { ReviewButton } from "@/components/ReviewButton";
+import { ReportButton } from "@/components/ReportButton";
 
 export function generateStaticParams() {
   return courses.map((c) => ({ id: String(c.id) }));
@@ -77,6 +78,7 @@ export default async function ClassDetail({ params }: { params: Promise<{ id: st
                     <p className="text-lg font-bold text-zinc-900">レビュー・コメント（{course.reviews.length} 件）</p>
                     {course?.reviews.map((review) => (
                     <div key={review.id} className="bg-white border rounded-xl p-4">
+                        <ReportButton />
                         <span className="font-bold text-amber-500">
                             <Stars rating={review.easy} />{" "}
                             <span className="ml-1 text-zinc-800">
